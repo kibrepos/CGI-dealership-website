@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardi Dealership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Libre Caslon Display';
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        .header {
+            background: #0D0B0C;
+            color: #fff;
+            padding: 20px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            font-family: 'Libre Caslon Display';
+            margin: 0;
+            font-size: 2em;
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-end; /* Align items to the right */
+            align-items: center;
+        }
+        .nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .nav a:hover {
+            color: #9E0808;
+        }
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .show {
+            display: block;
+        }
+        .hero {
+            background: url('car-dealership-hero.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 80px 10px;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 60px;
+        }
+        .hero h2 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .button {
+            display: inline-block;
+            background: #0056b3;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background: #003d7a;
+        }
+        .content {
+            padding: 60px 20px;
+            text-align: center;
+            animation: slideIn 1s ease-in-out;
+            margin-bottom: 60px;
+        }
+        .content h3 {
+            margin-top: 0;
+            font-size: 2em;
+        }
+        .footer {
+            background: #0D0B0C;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .latest-products {
+            background: linear-gradient(0deg, #000000 0%, #310202 85%, #9E0808 100%);
+            color: #fff;
+            padding: 60px 10px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        .latest-products h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .latest-products p {
+            font-size: 1.2em;
+        }
+        .arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .arrow {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 2em;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        .arrow:hover {
+            color: #9E0808;
+        }
+        .car-image {
+            width: 100%;
+            height: 200px;
+            background: #555;
+            margin: 20px 0;
+            transition: background 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+        .placeholder {
+            background: url('https://via.placeholder.com/600x400') no-repeat center center;
+            background-size: cover;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 40px;
+        }
+        a {
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CAR-DI</h1>
+        <div class="nav">
+            <a href="#products">Products</a>
+            <a href="#about">About Us</a>
+            <a href="#contacts">Contacts</a>
+            <a href="#services">Services</a>
+            <div class="profile-container">
+                <img src="https://via.placeholder.com/40" alt="Profile Image" class="profile-img" onclick="toggleDropdown()">
+                <div id="dropdown" class="dropdown-content">
+                    <a href="#view-profile">View Profile</a>
+                    <a href="#logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="latest-products" id="products">
+        <h2>Latest Products</h2>
+        <p>Check out our newest arrivals and hottest deals.</p>
+        <div class="car-image" id="carImage"></div>
+        <div class="arrows">
+            <span class="arrow" onclick="switchCar(-1)">&#8592;</span>
+            <span class="arrow" onclick="switchCar(1)">&#8594;</span>
+        </div>
+    </div>
+    <div class="hero">
+        <h2>Find Your Dream Car</h2>
+        <p>Explore our wide range of vehicles and get the best deals.</p>
+        <a href="#products" class="button">Browse Inventory</a>
+    </div>
+    <div class="content" id="about">
+        <h3>About Us</h3>
+        <div class="placeholder"></div>
+        <p>At Cardi Car Dealership, we offer top-quality vehicles, excellent customer service, and competitive prices. Let us help you find the perfect car for your needs!</p>
+        <a href="#about" class="button">Learn More</a>
+    </div>
+    <div class="content" id="contacts">
+        <h3>Contacts</h3>
+        <div class="placeholder"></div>
+        <p>Contact us for more information, schedule a test drive, or get assistance from our friendly staff.</p>
+        <a href="#contacts" class="button">Get In Touch</a>
+    </div>
+    <div class="content" id="services">
+        <h3>Services</h3>
+        <div class="placeholder"></div>
+        <p>Our dealership offers a range of services including financing, maintenance, and trade-ins to make your car buying experience seamless.</p>
+        <a href="#services" class="button">Our Services</a>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Cardi Car Dealership. All rights reserved.</p>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const carImages = [
+            'https://via.placeholder.com/600x200.png?text=Car+1',
+            'https://via.placeholder.com/600x200.png?text=Car+2',
+            'https://via.placeholder.com/600x200.png?text=Car+3'
+        ];
+
+        function switchCar(direction) {
+            currentIndex = (currentIndex + direction + carImages.length) % carImages.length;
+            document.getElementById('carImage').style.backgroundImage = `url(${carImages[currentIndex]})`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            switchCar(0); // Initialize with the first image
+        });
+
+        function toggleDropdown() {
+            document.getElementById('dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-img')) {
+                const dropdowns = document.getElementsByClassName('dropdown-content');
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
