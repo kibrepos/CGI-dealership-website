@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
-    <title>Financial Calculator</title>
+
+    <title>Car-di Products</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +14,6 @@
             background-color: black;
             background-size: cover;
             color: #fff;
-            background-image: url('https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/login-bg.jpg');
         }
         .header {
             color: #fff;
@@ -43,96 +43,74 @@
             font-size: 20px;
             margin-bottom: 20px;
         }
-        .calculator-form {
-            display: flex;
-            flex-direction: column;
-        }
-        .calculator-form label {
-            font-family: 'Libre Caslon Display';
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .calculator-form select, .calculator-form button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #333;
+        .section a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #990109;
             color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
             font-size: 16px;
         }
-        .calculator-form button {
-            background: #990109;
-            border: none;
-        }
-        .calculator-form button:hover {
+        .section a:hover {
             background: #cc000a;
         }
-        .result {
+        .car-models {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .car-model {
+            flex: 1 0 21%;
+            margin: 1.5%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+        .car-model img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .car-model h3 {
             font-family: 'Libre Caslon Display';
-            font-size: 20px;
-            margin-top: 20px;
+            font-size: 25px;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>CAR-DI Financial Calculator</h1>
+        <h1>CAR-DI Products</h1>
     </div>
     <div class="container">
         <div class="section">
-            <h2>Calculate Your Payments</h2>
-            <form class="calculator-form" id="calculator-form">
-                <label for="principal">Total Loan Amount:</label>
-                <select id="principal" name="principal">
-                    <option value="20000">20,000</option>
-                    <option value="30000">30,000</option>
-                    <option value="40000">40,000</option>
-                    <option value="50000">50,000</option>
-                    <option value="60000">60,000</option>
-                </select>
-
-                <label for="downpayment">Down Payment:</label>
-                <select id="downpayment" name="downpayment">
-                    <option value="2000">2,000</option>
-                    <option value="3000">3,000</option>
-                    <option value="4000">4,000</option>
-                    <option value="5000">5,000</option>
-                    <option value="6000">6,000</option>
-                </select>
-
-                <label for="term">Loan Term (months):</label>
-                <select id="term" name="term">
-                    <option value="12">12</option>
-                    <option value="24">24</option>
-                    <option value="36">36</option>
-                    <option value="48">48</option>
-                    <option value="60">60</option>
-                </select>
-
-                <button type="button" onclick="calculatePayment()">Calculate Payment</button>
-            </form>
-            <div class="result" id="result"></div>
+            <h2>Our Car Models</h2>
+            <div class="car-models">
+                <div class="car-model">
+                    <img src="https://via.placeholder.com/200" alt="Car Model 1">
+                    <h3>Model 1</h3>
+                </div>
+                <div class="car-model">
+                    <img src="https://via.placeholder.com/200" alt="Car Model 2">
+                    <h3>Model 2</h3>
+                </div>
+                <div class="car-model">
+                    <img src="https://via.placeholder.com/200" alt="Car Model 3">
+                    <h3>Model 3</h3>
+                </div>
+                <div class="car-model">
+                    <img src="https://via.placeholder.com/200" alt="Car Model 4">
+                    <h3>Model 4</h3>
+                </div>
+                <!-- Add more car models as needed -->
+            </div>
+        </div>
+        <div class="section">
+            <h2>Financial Calculator</h2>
+            <p>Use our financial calculator to estimate your monthly payments and determine the best financing options for you.</p>
+            <a href="/cgi-bin/financial_calc.cgi">Go to Financial Calculator</a>
         </div>
     </div>
-
-    <script>
-        function calculatePayment() {
-            var principal = parseFloat(document.getElementById('principal').value);
-            var downpayment = parseFloat(document.getElementById('downpayment').value);
-            var term = parseInt(document.getElementById('term').value);
-
-            if (isNaN(principal) || isNaN(downpayment) || isNaN(term) || term <= 0) {
-                document.getElementById('result').innerText = "Please select valid values for all fields.";
-                return;
-            }
-
-            var loanAmount = principal - downpayment;
-            var monthlyPayment = loanAmount / term;
-
-            document.getElementById('result').innerText = "Your estimated monthly payment is $ " + monthlyPayment.toFixed(2);
-        }
-    </script>
 </body>
 </html>
