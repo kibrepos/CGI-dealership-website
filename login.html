@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/256/12689/12689282.png?semt=ais_hybrid">
 
-    <title>Car-di</title>
+    <title>Cardi Dealership</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,21 +15,28 @@
             background-color: black;
             background-size: cover;
             color: #fff;
-            background-image: url('https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/login-bg.jpg');
+            background-image: url('bg.jpg');
+          
           
         }
         .header {
+            background: #000000;
             color: #fff;
-            padding: 20px 10px;
-            text-align: left;
+            padding: 10px 30px; /* Increased padding for wider header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .header h1 {
+            font-family: 'Libre Caslon Display', serif;
             margin: 0;
-            font-family: 'Libre Caslon Display';
+            font-size: 2.5em;
+            letter-spacing: 1px;
         }
         .login-form {
             max-width: 300px;
-            margin: 150px 0 0  200px;
+            margin: 50px 0 0  200px;
             padding: 20px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 5px;
@@ -70,7 +78,7 @@
            display: flex;
             align-items: center;
             margin-bottom: 10px;
-            margin-right: 150px;
+            margin-right: 220px;
         }
         .login-form .remember-me input {
             margin-right: 1px;
@@ -97,7 +105,7 @@
             <input type="password" name="password" required placeholder="Enter your password">
             <div class="remember-me">
                 <input type="checkbox" name="remember-me" id="remember-me">
-                <label for="remember-me">remember me</label>
+                <label for="remember-me">Save</label>
             </div>
             <br><br>
             <button type="submit">Login</button>

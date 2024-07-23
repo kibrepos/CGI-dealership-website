@@ -74,6 +74,9 @@ int main() {
     std::string queryString = std::getenv("QUERY_STRING") ? std::getenv("QUERY_STRING") : "";
     std::string requestMethod = std::getenv("REQUEST_METHOD") ? std::getenv("REQUEST_METHOD") : "GET";
 
+    // Always print headers first
+    printHTMLHeaderWithCookie();
+
     if (queryString.find("page=login") != std::string::npos && requestMethod == "POST") {
         handleLogin();
     } else {
