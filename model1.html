@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model 1 - Cardi Dealership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baufra&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/256/12689/12689282.png?semt=ais_hybrid">
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Libre Caslon Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .header, .footer {
+            background: #000;
+            color: #fff;
+            padding: 10px 30px;
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-family: 'Libre Caslon Display', serif;
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            font-family: 'Baufra', sans-serif;
+        }
+
+        .nav a {
+            color: #fff;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #9E0808;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #fff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #000;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8a8a8a;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://via.placeholder.com/1600x700') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            text-align: left;
+            padding: 170px 150px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        .button {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: 2px solid #fff;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #920000;
+        }
+
+        /* Content */
+        .content {
+            padding: 60px 20px;
+            text-align: center;
+            animation: slideIn 1s ease-in-out;
+            margin-bottom: 60px;
+        }
+
+        .content h3 {
+            margin: 0 0 15px 0;
+            font-size: 60px;
+            font-family: 'Lexend Zetta', sans-serif;
+        }
+
+        .content hr {
+            width: 60%;
+            margin: 10px auto;
+            border: none;
+            border-top: 2px solid rgb(190, 0, 0);
+        }
+
+        /* Sections */
+        .specs, .color-options, .dealer-selection {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .specs h3, .color-options h3, .dealer-selection h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .specs table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs th, .specs td {
+            padding: 10px;
+            border: 1px solid #fff;
+            text-align: left;
+        }
+
+        .specs th {
+            background-color: #333;
+        }
+
+        .color-options select, .dealer-selection select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #fff;
+            background-color: #000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        /* Gallery */
+        .gallery {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            height: 500px; /* Adjust height for larger placeholder image */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Add transform for animation */
+            opacity: 0;
+            transform: scale(0.9); /* Start with a smaller scale */
+        }
+
+        .gallery img.active {
+            opacity: 1;
+            transform: scale(1); /* End with normal scale */
+        }
+
+        /* Color Options */
+        .color-cards {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .color-card {
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .color-square {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        .color-card span {
+            display: block;
+            color: #fff;
+        }
+
+        /* Reviews */
+        .reviews {
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .reviews h4 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .reviews ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reviews li {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+
+        /* Photos and Highlights */
+.photos-highlights {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.photos-highlights h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.highlights-gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.highlights-gallery img {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.highlights-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.carousel-main-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel-thumbnails img {
+    width: 150px;
+    height: 100px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.carousel-thumbnails img:hover {
+    transform: scale(1.1);
+}
+
+/* Overview Section */
+.overview {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.overview img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.header a {
+            color: #fff;
+            text-decoration: none;
+        }
+/* Keyframes for sliding effect */
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+.section {
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .section h2 {
+            font-family: 'Libre Caslon Display';
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .section p {
+            font-family: 'Libre Caslon Display';
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .section a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #990109;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .section a:hover {
+            background: #cc000a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="cardibidealer.cgi">
+            <h1>CAR-DI</h1>
+            </a>
+        <div class="nav">
+            <a href="products.cgi">Products</a>
+            <a href="cardibidealer.cgi#services">Services</a>
+            <a href="cardibidealer.cgi#about">About us</a>
+            <a href="cardibidealer.cgi#contacts">Contacts</a>
+            <div class="profile-container">
+                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjEwMzQtZWxlbWVudC0wNi0zOTcucG5n.png" alt="Profile Image" class="profile-img" onclick="toggleDropdown()">
+                <div id="dropdown" class="dropdown-content">
+                    <a href="viewprofile.cgi">View Profile</a>
+                    <a href="#logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content" id="details">
+        <h3>MODEL 1 DETAILS</h3>
+        <hr>
+        <div class="gallery">
+            <img src="https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/redcar.png" alt="Car Image Red" data-color="red" class="active">
+            <img src="https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/greycar.png?raw=true" alt="Car Image Gray" data-color="gray">
+            <img src="https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/bluecar.png" alt="Car Image Blue" data-color="blue">
+        </div>
+        <div class="color-options">
+            <h3>Choose Your Color</h3>
+            <div class="color-cards">
+                <div class="color-card" data-color="red">
+                    <div class="color-square" style="background: #ff0000;"></div>
+                    <span>Red</span>
+                </div>
+                <div class="color-card" data-color="gray">
+                    <div class="color-square" style="background: #808080;"></div>
+                    <span>Gray</span>
+                </div>
+                <div class="color-card" data-color="blue">
+                    <div class="color-square" style="background: #0000ff;"></div>
+                    <span>Blue</span>
+                </div>
+            </div>
+        </div>
+        <div class="specs">
+            <h3>Specifications</h3>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Engine</td>
+                    <td>V8 Twin Turbo</td>
+                </tr>
+                <tr>
+                    <td>Transmission</td>
+                    <td>8-Speed Automatic</td>
+                </tr>
+                <tr>
+                    <td>Horsepower</td>
+                    <td>550 HP</td>
+                </tr>
+                <tr>
+                    <td>Top Speed</td>
+                    <td>200 mph</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Overview Section -->
+<div class="overview">
+    <h3>Overview Section</h3>
+    <hr>
+    <img src="https://via.placeholder.com/1200x600" alt="Brochure Style Image">
+</div>
+<!-- Photos and Highlights -->
+<div class="photos-highlights">
+    <h3>Photos & Highlights</h3>
+    <div class="carousel-container">
+        <div class="carousel-main-image">
+            <img id="main-carousel-image" src="https://via.placeholder.com/800x600" alt="Main Highlight">
+        </div>
+        <div class="carousel-thumbnails">
+            <img src="https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/pix1.png?raw=true" alt="Highlight 1" onclick="changeMainImage(this)">
+            <img src="https://via.placeholder.com/150x100" alt="Highlight 2" onclick="changeMainImage(this)">
+            <img src="https://via.placeholder.com/150x100" alt="Highlight 3" onclick="changeMainImage(this)">
+            <img src="https://via.placeholder.com/150x100" alt="Highlight 4" onclick="changeMainImage(this)">
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Financial Calculator</h2>
+    <p>Use our financial calculator to estimate your monthly payments and determine the best financing options for you.</p>
+    <a href="/cgi-bin/financial_calc.cgi">Go to Financial Calculator</a>
+</div>
+</div>
+
+        <div class="dealer-selection">
+            <h3>Select Dealer</h3>
+            <select>
+                <option value="dealer1">Dealer 1</option>
+                <option value="dealer2">Dealer 2</option>
+                <option value="dealer3">Dealer 3</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Cardi Dealership. All rights reserved.</p>
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            document.getElementById('dropdown').classList.toggle('show');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-img')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Gallery Functionality
+        const colorCards = document.querySelectorAll('.color-card');
+        const galleryImages = document.querySelectorAll('.gallery img');
+
+        colorCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const color = card.getAttribute('data-color');
+                galleryImages.forEach(img => {
+                    if (img.getAttribute('data-color') === color) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        function changeMainImage(thumb) {
+    document.getElementById('main-carousel-image').src = thumb.src;
+}
+
+    </script>
+</body>
+</html>

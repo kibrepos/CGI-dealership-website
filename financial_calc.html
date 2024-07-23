@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://cdn-icons-png.freepik.com/256/12689/12689282.png?semt=ais_hybrid">
     <title>Financial Calculator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Libre Caslon Display', serif;
             margin: 0;
             padding: 0;
             background-color: black;
@@ -15,45 +16,124 @@
             color: #fff;
             background-image: url('https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/login-bg.jpg');
         }
-        .header {
+
+        .header, .footer {
+            background: #000;
             color: #fff;
-            padding: 20px 10px;
-            text-align: left;
+            padding: 10px 30px;
+            text-align: center;
         }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         .header h1 {
             margin: 0;
-            font-family: 'Libre Caslon Display';
+            font-size: 2.5em;
+            letter-spacing: 1px;
         }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            font-family: 'Baufra', sans-serif;
+        }
+
+        .nav a {
+            color: #fff;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #9E0808;
+        }
+
+        .profile-container {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #fff;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #000;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8a8a8a;
+        }
+
+        .show {
+            display: block;
+        }
+
         .container {
-            padding: 20px;
+            padding: 60px 20px;
+            text-align: center;
+            animation: slideIn 1s ease-in-out;
+            margin-bottom: 60px;
         }
+
         .section {
             margin-bottom: 40px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 5px;
         }
+
         .section h2 {
-            font-family: 'Libre Caslon Display';
             font-size: 40px;
             margin-bottom: 20px;
         }
-        .section p {
-            font-family: 'Libre Caslon Display';
-            font-size: 20px;
-            margin-bottom: 20px;
+
+        .section hr {
+            width: 60%;
+            margin: 10px auto;
+            border: none;
+            border-top: 2px solid rgb(190, 0, 0);
         }
+
         .calculator-form {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
+
         .calculator-form label {
-            font-family: 'Libre Caslon Display';
             font-size: 20px;
             margin-bottom: 10px;
         }
+
         .calculator-form select, .calculator-form button {
             width: 100%;
+            max-width: 400px;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
@@ -62,35 +142,134 @@
             color: #fff;
             font-size: 16px;
         }
+
         .calculator-form button {
             background: #990109;
             border: none;
         }
+
         .calculator-form button:hover {
             background: #cc000a;
         }
+
         .result {
-            font-family: 'Libre Caslon Display';
             font-size: 20px;
             margin-top: 20px;
         }
+
+        .model-image {
+            margin-top: 20px;
+        }
+
+        .model-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); }
+            to { transform: translateY(0); }
+        }
+
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .result-container {
+    border: 2px solid rgb(190, 0, 0);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.8); /* Use your website's background color */
+    color: #fff; /* Use your website's text color */
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.result-image {
+    flex: 0 0 200px; /* Adjust size as needed */
+    margin-right: 20px;
+}
+
+.result-text {
+    flex: 1;
+}
+
+.result-text h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #fff; /* Use your website's text color */
+}
+
+.result-text p {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: rgb(190, 0, 0); /* Highlight color */
+}
+
+.result-text .note {
+    font-size: 0.9em;
+    color: #ccc; /* Light text color for notes */
+}
+
+.result-text .buttons {
+    margin-top: 10px;
+}
+
+.result-text .buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background: #990109; /* Button background color */
+    color: #fff; /* Button text color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-text .buttons a:hover {
+    background: #cc000a; /* Button hover background color */
+}
+
+
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>CAR-DI Financial Calculator</h1>
+        <a href="cardibidealer.cgi">
+            <h1>CAR-DI</h1>
+        </a>
+        <div class="nav">
+            <a href="products.cgi">Products</a>
+            <a href="cardibidealer.cgi#services">Services</a>
+            <a href="cardibidealer.cgi#about">About us</a>
+            <a href="cardibidealer.cgi#contacts">Contacts</a>
+            <div class="profile-container">
+                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjEwMzQtZWxlbWVudC0wNi0zOTcucG5n.png" alt="Profile Image" class="profile-img" onclick="toggleDropdown()">
+                <div id="dropdown" class="dropdown-content">
+                    <a href="viewprofile.cgi">View Profile</a>
+                    <a href="#logout">Logout</a>
+                </div>
+            </div>
+        </div>
     </div>
+
     <div class="container">
         <div class="section">
             <h2>Calculate Your Payments</h2>
+            <hr>
             <form class="calculator-form" id="calculator-form">
-                <label for="principal">Total Loan Amount:</label>
-                <select id="principal" name="principal">
-                    <option value="20000">20,000</option>
-                    <option value="30000">30,000</option>
-                    <option value="40000">40,000</option>
-                    <option value="50000">50,000</option>
-                    <option value="60000">60,000</option>
+                <label for="model">Choose a Car Model:</label>
+                <select id="model" name="model" onchange="updateCarImage()">
+                    <option value="model1" data-price="20000" data-img="https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/redcar.png">Model 1 - $20,000</option>
+                    <option value="model2" data-price="30000" data-img="https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/bluecar.png">Model 2 - $30,000</option>
+                    <option value="model3" data-price="40000" data-img="https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/greycar.png?raw=true">Model 3 - $40,000</option>
                 </select>
 
                 <label for="downpayment">Down Payment:</label>
@@ -113,26 +292,81 @@
 
                 <button type="button" onclick="calculatePayment()">Calculate Payment</button>
             </form>
-            <div class="result" id="result"></div>
+            <div class="result-container" id="result-container">
+                <div class="result-image" id="result-image">
+                    <img src="https://raw.githubusercontent.com/kibrsifr/CGI-dealership-website/main/assets/redcar.png" alt="Car Image">
+                </div>
+                <div class="result-text">
+                    <h3 id="car-model">Model Name</h3>
+                    <p id="monthly-payment">₱0 / month</p>
+                    <p id="financed-amount">₱0 Amount Financed</p>
+                    <p class="note">Computations are estimate only. Please contact any dealer for final quotation.</p>
+                    <div class="buttons">
+                        <a href="#" id="contact-dealer">Contact Dealer</a>
+                        <a href="#" id="apply-financing">Apply For Financing</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <div class="footer">
+        <p>&copy; 2024 Cardi Dealership. All rights reserved.</p>
+    </div>
+
     <script>
-        function calculatePayment() {
-            var principal = parseFloat(document.getElementById('principal').value);
-            var downpayment = parseFloat(document.getElementById('downpayment').value);
-            var term = parseInt(document.getElementById('term').value);
-
-            if (isNaN(principal) || isNaN(downpayment) || isNaN(term) || term <= 0) {
-                document.getElementById('result').innerText = "Please select valid values for all fields.";
-                return;
-            }
-
-            var loanAmount = principal - downpayment;
-            var monthlyPayment = loanAmount / term;
-
-            document.getElementById('result').innerText = "Your estimated monthly payment is $ " + monthlyPayment.toFixed(2);
+        function toggleDropdown() {
+            document.getElementById('dropdown').classList.toggle('show');
         }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-img')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function updateCarImage() {
+            var modelSelect = document.getElementById('model');
+            var selectedOption = modelSelect.options[modelSelect.selectedIndex];
+            var carImage = selectedOption.getAttribute('data-img');
+            document.getElementById('model-image').querySelector('img').src = carImage;
+        }
+
+        function calculatePayment() {
+    var modelSelect = document.getElementById('model');
+    var principal = parseFloat(modelSelect.options[modelSelect.selectedIndex].getAttribute('data-price'));
+    var downpayment = parseFloat(document.getElementById('downpayment').value);
+    var term = parseInt(document.getElementById('term').value);
+
+    if (isNaN(principal) || isNaN(downpayment) || isNaN(term) || term <= 0) {
+        document.getElementById('car-model').innerText = "Invalid Input";
+        document.getElementById('monthly-payment').innerText = "₱0 / month";
+        document.getElementById('financed-amount').innerText = "₱0 Amount Financed";
+        document.getElementById('result-container').classList.remove('hidden');
+        return;
+    }
+
+    var loanAmount = principal - downpayment;
+    var monthlyPayment = loanAmount / term;
+
+    var carModel = modelSelect.options[modelSelect.selectedIndex].text;
+    var carImage = modelSelect.options[modelSelect.selectedIndex].getAttribute('data-img');
+
+    document.getElementById('car-model').innerText = carModel;
+    document.getElementById('monthly-payment').innerText = "₱" + monthlyPayment.toFixed(2) + " / month";
+    document.getElementById('financed-amount').innerText = "₱" + loanAmount.toFixed(2) + " Amount Financed";
+    document.getElementById('result-image').querySelector('img').src = carImage;
+
+    document.getElementById('result-container').classList.remove('hidden');
+}
+
+
     </script>
 </body>
 </html>

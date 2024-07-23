@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Baufra&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta&display=swap" rel="stylesheet">
     <link rel="icon" href="https://cdn-icons-png.freepik.com/256/12689/12689282.png?semt=ais_hybrid">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     <style>
         body {
@@ -88,22 +90,6 @@
         .show {
             display: block;
         }
-        .video-background {
-            position: relative;
-            width: 100%;
-            height: 700px;
-            overflow: hidden;
-            z-index: -1; /* Ensures the video stays in the background */
-        }
-        .video-background iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Prevents interaction with the video */
-        }
         .hero {
             background: url('https://github.com/kibrsifr/CGI-dealership-website/blob/main/bgt.jpg?raw=true') no-repeat center center;
             background-size: cover;
@@ -129,6 +115,8 @@
             border: 2px solid #fff;
             font-weight: bold;
             transition: background 0.3s ease, border-color 0.3s ease;
+            font-family: 'Baufra', sa
+            
         }
         .button:hover {
             background: #920000;
@@ -149,13 +137,58 @@
             margin: 10px auto;
             border: none;
             border-top: 2px solid rgb(190, 0, 0);
-            padding: 20px;
+          
         }
         .footer {
-            background: #0D0B0C;
+            background: #111011;
             color: #fff;
-            padding: 20px 0;
+            padding: 5px 0;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            font-family: 'Baufra', sans-serif;
+        }
+        .footer-logo {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+        }
+        .footer-column h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin: 5px 0;
+        }
+        .footer-column ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-column ul li a:hover {
+            color: #9E0808;
+        }
+        .social-media {
+            margin-top: 20px;
+        }
+        .social-media a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #9E0808;
         }
         .latest-products {
             background: linear-gradient(0deg, #000000 0%, #310202 85%, #9E0808 100%);
@@ -257,12 +290,248 @@
         :focus {
             outline: none;
         }
+        .social-media a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: #9E0808;
+}
+.service-panel {
+    display: flex;
+    justify-content: center; /* Center columns horizontally */
+    flex-wrap: wrap; /* Allow columns to wrap if there's not enough space */
+    gap: 20px; /* Space between columns, adjust as needed */
+}
+
+.service-column {
+    background-color: #000;
+    border: 2px solid #8d0404;
+    padding: 40px; /* Adjusted padding */
+    margin: 0; /* Removed margin, or adjust if needed */
+    width: 250px; /* Set a fixed width to control column size */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    box-sizing: border-box;
+    text-align: center;
+}
+.service-column p{
+    font-family: Georgia, serif;
+    line-height: 1.6;
+}
+
+.service-column:hover {
+    background-color: #8d0404; /* Red background on hover */
+    border-color: #000;
+    transform: scale(1.05);
+}
+.icon-container {
+    background-color: red; /* Red circle background */
+    border-radius: 50%; /* Makes the background circular */
+    display: inline-flex; /* Aligns icon in the center */
+    padding: 15px; /* Space around the icon */
+    margin-bottom: 10px; /* Space between icon and text */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.icon {
+    width: 40px; /* Size of the icon */
+    height: 40px;
+    transition: filter 0.3s ease; /* Smooth color transition */
+    filter: invert(0); /* Initially, the icon is white */
+}
+
+.service-column:hover .icon-container {
+    background-color: #fff; /* Circle background color on hover */
+}
+
+.service-column:hover .icon {
+    filter: invert(0) sepia(1) saturate(5) brightness(0) contrast(100%);
+}
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.about-us-image {
+    flex: 1 1 10px;
+    padding-left: 200px;
+}
+
+.about-us-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.about-us-text {
+    flex: 1 1 500px;
+    padding: 20px;
+    text-align: left;
+}
+
+.about-us-text h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.about-us-text p, .about-us-text ul {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #ccc;
+    font-family: Georgia, serif;
+}
+
+.about-us-text ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.about-us-text ul li {
+    margin-bottom: 10px;
+}
+.contacts-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-message, .contact-details {
+    flex: 1;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+.contact-message {
+    background: #fff;
+    color: #000;
+}
+
+.contact-details {
+    background: #920000;
+    color: #fff;
+    text-align: center;
+}
+
+.contact-message h3, 
+.contact-details h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-family: 'Baufra', sans-serif;
+}
+
+.contact-message p,
+.contact-details p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    font-family: 'Baufra', sans-serif;
+}
+
+.contact-details a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: #000;
+    border-color: #000;
+}
+.SUS {
+    background-color: #000000; /* Dark background to match the rest of the site */
+    color: #fff; /* Light text color for contrast */
+    padding: 10px; /* Increased padding for a balanced look */
+    border-radius: 8px; /* Slightly reduced border-radius for smaller corners */
+    margin: 10px auto;
+    max-width: 500px; /* Reduced max-width for better alignment */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Slight shadow for better visibility */
+}
+
+.SUS h3 {
+    font-size: 2.5em; /* Reduced font-size for smaller headings */
+    margin: 0 0 15px 0; /* Removed top margin and adjusted bottom margin */
+    color: #fff; /* White text color */
+    font-family: 'Baufra', sans-serif;
+}
+
+.SUS .form-group {
+    margin-bottom: 12px; /* Reduced margin for better spacing */
+}
+
+.SUS label {
+    display: block;
+    font-size: 1.1em; /* Slightly reduced font-size for labels */
+    margin-bottom: 4px; /* Adjusted margin for better spacing */
+    color: #ddd; 
+    font-family: 'Baufra', sans-serif;
+}
+
+.SUS input, .SUS textarea {
+    width: 100%;
+    padding: 8px; /* Reduced padding for smaller input fields */
+    border: 1px solid #221f1f; /* Dark border to fit the theme */
+    border-radius: 4px; /* Slightly reduced border-radius */
+    background-color: #333; /* Dark background for inputs */
+    color: #fff; /* Light text color */
+    font-size: 0.9em; /* Slightly reduced font-size for inputs */
+    font-family: 'Baufra', sans-serif;
+}
+
+.SUS input:focus, .SUS textarea:focus {
+    border-color: #9E0808; /* Highlight border on focus */
+    outline: none;
+}
+
+.SUS button {
+    background-color: #000; /* Dark background for button */
+    color: #fff; /* Light text color */
+    padding: 8px 16px; /* Reduced padding for a smaller button */
+    border: 2px solid #fff; /* White border */
+    border-radius: 4px; /* Slightly reduced border-radius for the button */
+    font-size: 0.9em; /* Slightly reduced font-size for the button */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 20px; /* Add space below the button */
+}
+.video-background {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+            z-index: -1; /* Ensures the video stays in the background */
+        }
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Prevents interaction with the video */
+        }
+.header a {
+            color: #fff;
+            text-decoration: none;
+        }
 
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>CAR-DI</h1>
+        <a href="cardibidealer.cgi">
+            <h1>CAR-DI</h1>
+            </a>
         <div class="nav">
             <a href="products.cgi">Products</a>
             <a href="#services">Services</a>
@@ -271,19 +540,16 @@
             <div class="profile-container">
                 <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA4L2pvYjEwMzQtZWxlbWVudC0wNi0zOTcucG5n.png" alt="Profile Image" class="profile-img" onclick="toggleDropdown()">
                 <div id="dropdown" class="dropdown-content">
-                    <a href="viewprofile.cgi">View Profile</a>
+                    <a href="viewprofile.cgi">Profile</a>
                     <a href="#logout">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--  <video autoplay loop muted src="resingf.mp4"></video>-->
-
     <div class="video-background">
         <iframe width="1600" height="700" src="https://www.youtube.com/embed/mQFK8wLNY_U?autoplay=1&mute=1&loop=1&playlist=mQFK8wLNY_U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-  
     
     <div class="car-container">
         <div class="car-image" id="carImage"></div>
@@ -301,26 +567,129 @@
     <div class="content" id="services">
         <h3>SERVICES</h3>
         <hr>
-        <div class="placeholder"></div>
-        <p>Our dealership offers a range of services including financing, maintenance, and trade-ins to make your car buying experience seamless.</p>
-        <a href="#services" class="button">Our Services</a>
+        <br><br><br>
+        <div class="service-panel">
+            <div class="service-column">
+                <div class="icon-container">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/car.png" alt="Vehicle Sales Icon" class="icon">
+                </div>
+                <h2>VEHICLE SALES</h2>
+                <p>We offer a wide range of new and pre-owned vehicles to fit your needs and budget.</p>
+            </div>
+            <div class="service-column">
+                <div class="icon-container">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/maintenance.png" alt="Service and Maintenance Icon" class="icon">
+                </div>
+                <h2>SERVICE AND MAINTENANCE</h2>
+                <p>Our certified technicians provide expert maintenance and repair services to keep your vehicle running smoothly.</p>
+            </div>
+            <div class="service-column">
+                <div class="icon-container">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/money.png" alt="Finance and Leasing Icon" class="icon">
+                </div>
+                <h2>FINANCE AND LEASING</h2>
+                <p>We offer competitive financing and leasing options to make purchasing or leasing your next vehicle easy and affordable.</p>
+            </div>
+            <div class="service-column">
+                <div class="icon-container">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/exchange.png" alt="Trade-In Services Icon" class="icon">
+                </div>
+                <h2>TRADE-IN SERVICES</h2>
+                <p>Trade in your old vehicle for a new one with our hassle-free trade-in services, offering fair market value.</p>
+            </div>
+        </div>
+       
     </div>
 
     <div class="content" id="about">
         <h3>ABOUT US</h3>
         <hr>
-        <div class="placeholder"></div>
-        <p>At Cardi Car Dealership, we offer top-quality vehicles, excellent customer service, and competitive prices. Let us help you find the perfect car for your needs!</p>
-        <a href="#about" class="button">Learn More</a>
+        <div class="about-us-container">
+            <div class="about-us-image">
+                <img src="https://github.com/kibrsifr/CGI-dealership-website/blob/main/bt.jpg?raw=true" alt="About Us Image">
+            </div>
+            <div class="about-us-text">
+                <h2>Who We Are</h2>
+                <p>At CARDI, we are passionate about cars and committed to providing our customers <br>with the best automotive experience. From our wide selection of new and pre-owned <br>vehicles to our expert maintenance services, we strive to exceed your expectations at <br>every turn.</p>
+                <h2>Our Mission</h2>
+                <p>Our mission is to deliver exceptional value and unparalleled customer service. <br>We aim to make every aspect of car ownership easy and enjoyable, from purchase <br>to maintenance and beyond.</p>
+                <h2>Why Choose Us</h2>
+                <p>CARDI B "WAP"</p>
+            </div>
+        </div>
     </div>
+    
     <div class="content" id="contacts">
-        <h3>CONTACTS</h3>
-        <hr>
-        <div class="placeholder"></div>
+        <div class="contacts-container">
+            <div class="contact-message">
+                <h3>We're here</h3>
+                <p>Swing by anytime—we promise, our cars aren’t the only thing that’ll get your engine revving 🍆</p>
+                <p><strong>📍Dasmarinas, Cavite</strong></p>
+
+
+            </div>
+            <div class="contact-details">
+                <h3>Let's talk.</h3>
+                <p>Share your dreams with us.</p>
+                <p>Contact us at <a href="mailto:cardi@cardealership.com">Cardi@cardealership.com</a></p>
+           
+            </div>
+      
+               
+            
+        </div>
     </div>
+
+    <div class="SUS" id="SAS">
+    <h3>Send Us a Message</h3>
+    <form action="your-form-handler-url" method="post">
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="button">Send Message</button>
+    </form>
+</div>
+    
   
     <div class="footer">
-        <p>&copy; 2024 Cardi Car Dealership. All rights reserved.</p>
+        <div class="footer-column">
+            <br><br>
+            <h1 style="font-family: 'Libre Caslon Display', serif;">CAR-DI</h1>
+        </div>
+        <div class="footer-column">
+            
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="products.cgi">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contacts">Contacts</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h4>Follow Us</h4>
+            <div class="social-media">
+                <a href="https://www.facebook.com/kiao.nine" class="social-media-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/login" class="social-media-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/markunil_/" class="social-media-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/feed/" class="social-media-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4>Our Policies</h4>
+            <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Return Policy</a></li>
+            </ul>
+        </div>
+
     </div>
 
     <button id="goUpButton" class="go-up-button">&#8679;</button>
@@ -328,7 +697,7 @@
     <script>
         let currentIndex = 0;
         const carImages = [
-            'https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/pix1.png?raw=true',
+           'https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/pix1.png?raw=true',
             'https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/pix2.jpg?raw=true',
             'https://github.com/kibrsifr/CGI-dealership-website/blob/main/assets/pix3.jpg?raw=true'
         ];
