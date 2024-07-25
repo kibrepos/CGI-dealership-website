@@ -74,15 +74,24 @@ int main() {
     std::string queryString = std::getenv("QUERY_STRING") ? std::getenv("QUERY_STRING") : "";
     std::string requestMethod = std::getenv("REQUEST_METHOD") ? std::getenv("REQUEST_METHOD") : "GET";
 
-    // Always print headers first
-    printHTMLHeaderWithCookie();
+    // Determine if headers need to be printed here
+    bool headersPrinted = false;
 
     if (queryString.find("page=login") != std::string::npos && requestMethod == "POST") {
         handleLogin();
+        headersPrinted = true;
     } else {
         if (isLoggedIn()) {
+            if (!headersPrinted) {
+                printHTMLHeaderWithCookie();
+                headersPrinted = true;
+            }
             printHTMLFile("C:\\xampp\\htdocs\\landing.html"); // Update path to landing.html
         } else {
+            if (!headersPrinted) {
+                printHTMLHeaderWithCookie();
+                headersPrinted = true;
+            }
             printHTMLFile("C:\\xampp\\htdocs\\login.html"); // Update path to login.html
         }
     }
